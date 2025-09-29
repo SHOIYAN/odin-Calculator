@@ -16,6 +16,8 @@ const period = document.querySelector(".period button");
 const plusMinus = document.querySelector(".plusminus");
 const equals = document.querySelector(".equals button");
 
+bottomDisplay.textContent = "0";
+topDisplay.textContent = "";
 
 function add(a, b) {
   return parseFloat((a + b).toFixed(4));
@@ -49,8 +51,11 @@ function handleNumber(num) {
     bottomDisplay.textContent = "";
     shouldResetBottom = false;
   }
-  if (bottomDisplay.textContent.length >= 10) return;
-  bottomDisplay.textContent += num;
+  if (bottomDisplay.textContent === '0'){
+    bottomDisplay.textContent = num;
+  } else if (bottomDisplay.textContent.length < 10){
+    bottomDisplay.textContent += num;
+  };
 }
 function handleOperator(op) {
   if (bottomDisplay.textContent === "") return;
@@ -83,8 +88,9 @@ function handleEquals() {
 }
 function handleClearAll() {
   firstNum = secondNum = operator = null;
-  bottomDisplay.textContent = "";
+  bottomDisplay.textContent = "0";
   topDisplay.textContent = "";
+  shouldResetBottom = false;
 }
 function handleBackspace() {
   bottomDisplay.textContent = bottomDisplay.textContent.slice(0, -1);

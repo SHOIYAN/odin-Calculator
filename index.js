@@ -51,9 +51,29 @@ function handleNumber(num) {
   }
   bottomDisplay.textContent += num;
 }
+function handleOperator(op) {
+  if (bottomDisplay.textContent === "") return;
+  if (op === "=") return;
+
+  if (firstNum !== null && operator) {
+    secondNum = parseFloat(bottomDisplay.textContent);
+    firstNum = operate(operator, firstNum, secondNum);
+    topDisplay.textContent = `${firstNum} ${op}`;
+    bottomDisplay.textContent = firstNum;
+  } else {
+    firstNum = parseFloat(bottomDisplay.textContent);
+    topDisplay.textContent = `${firstNum} ${op}`;
+  }
+
+  operator = op;
+  shouldResetBottom = true;
+}
 
 
 //  Button Listeners
 numberButtons.forEach((btn) =>
   btn.addEventListener('click', () => handleNumber(btn.textContent.trim()))
+);
+operatorButtons.forEach((btn) =>
+  btn.addEventListener("click", () => handleOperator(btn.dataset.opp))
 );

@@ -92,6 +92,12 @@ function handlePlusMinus() {
   if (isNaN(input)) return;
   bottomDisplay.textContent = `${input * -1}`;
 }
+function handleDecimal() {
+  if (!bottomDisplay.textContent.includes(".")) {
+    bottomDisplay.textContent += ".";
+    shouldResetBottom = false;
+  }
+}
 
 
 //  Button Listeners
@@ -105,3 +111,4 @@ equals.addEventListener("click", handleEquals);
 clearEverything.addEventListener("click", handleClearAll);
 clear.addEventListener("click", handleBackspace);
 plusMinus.addEventListener("click", handlePlusMinus);
+period.addEventListener("click", handleDecimal);

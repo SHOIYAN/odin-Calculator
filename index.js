@@ -49,6 +49,7 @@ function handleNumber(num) {
     bottomDisplay.textContent = "";
     shouldResetBottom = false;
   }
+  if (bottomDisplay.textContent.length >= 10) return;
   bottomDisplay.textContent += num;
 }
 function handleOperator(op) {
@@ -58,11 +59,12 @@ function handleOperator(op) {
   if (firstNum !== null && operator) {
     secondNum = parseFloat(bottomDisplay.textContent);
     firstNum = operate(operator, firstNum, secondNum);
-    topDisplay.textContent = `${firstNum} ${op}`;
-    bottomDisplay.textContent = firstNum;
+    topDisplay.textContent = `${formatOutput(firstNum)} ${op}`;
+    bottomDisplay.textContent = formatOutput(firstNum);
+
   } else {
     firstNum = parseFloat(bottomDisplay.textContent);
-    topDisplay.textContent = `${firstNum} ${op}`;
+    topDisplay.textContent = `${formatOutput(firstNum)} ${op}`;
   }
 
   operator = op;
@@ -72,8 +74,8 @@ function handleEquals() {
   if (firstNum !== null && operator && bottomDisplay.textContent !== "") {
     secondNum = parseFloat(bottomDisplay.textContent);
     const output = operate(operator, firstNum, secondNum);
-    topDisplay.textContent = `${firstNum} ${operator} ${secondNum} =`;
-    bottomDisplay.textContent = output;
+    topDisplay.textContent = `${formatOutput(firstNum)} ${operator} ${formatOutput(secondNum)} =`;
+    bottomDisplay.textContent = formatOutput(output);
     firstNum = output;
     operator = null;
     shouldResetBottom = true;
@@ -90,13 +92,22 @@ function handleBackspace() {
 function handlePlusMinus() {
   let input = Number(bottomDisplay.textContent);
   if (isNaN(input)) return;
-  bottomDisplay.textContent = `${input * -1}`;
+  bottomDisplay.textContent = formatOutput(input * -1);
 }
 function handleDecimal() {
+  if (bottomDisplay.textContent.length >= 10) return;
   if (!bottomDisplay.textContent.includes(".")) {
     bottomDisplay.textContent += ".";
     shouldResetBottom = false;
   }
+}
+function formatOutput(num) {
+  if (typeof num !== "number" || isNaN(num)) return num;
+  const str = num.toString();
+  if (str.length > 10) {
+    return num.toExponential(4); 
+  }
+  return parseFloat(num.toFixed(4));
 }
 
 

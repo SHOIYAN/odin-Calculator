@@ -1,12 +1,219 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
     <title>Calculator</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <!-- display part -->
+      <div class="upper">
+        <div class="display">
+          <div class="top"></div>
+          <div class="bottom">
+            
+          </div>
+        </div>
+      </div>
+      <!-- number part -->
+      <div class="lower">
+        <div class="zero-row">
+          <div class="zero-container">
+            <div class="digits clearEverything operator">
+              <button>CE</button>
+            </div>
+            <div class="digits clear operator">
+              <button>C</button>
+            </div>
+          </div>
+
+          <div class="digits division symbol operator" data-opp="/">
+            <button>
+              <svg
+                fill="#ffffff"
+                width="20px"
+                height="20px"
+                viewBox="0 0 56 56"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 27.9883 17.6758 C 29.9102 17.6758 31.4570 16.1055 31.4570 14.2305 C 31.4570 12.3086 29.9102 10.7617 27.9883 10.7617 C 26.0898 10.7617 24.5429 12.3086 24.5429 14.2305 C 24.5429 16.1055 26.0898 17.6758 27.9883 17.6758 Z M 10.7617 30.0274 L 45.2383 30.0274 C 46.3633 30.0274 47.3476 29.0664 47.3476 27.9180 C 47.3476 26.7695 46.3633 25.8320 45.2383 25.8320 L 10.7617 25.8320 C 9.6367 25.8320 8.6524 26.7695 8.6524 27.9180 C 8.6524 29.0664 9.6367 30.0274 10.7617 30.0274 Z M 27.9883 45.2383 C 29.9102 45.2383 31.4570 43.6914 31.4570 41.7695 C 31.4570 39.8711 29.9102 38.3242 27.9883 38.3242 C 26.0898 38.3242 24.5429 39.8711 24.5429 41.7695 C 24.5429 43.6914 26.0898 45.2383 27.9883 45.2383 Z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="first-row">
+          <div class="digits number">
+            <button>7</button>
+          </div>
+          <div class="digits number">
+            <button>8</button>
+          </div>
+          <div class="digits number">
+            <button>9</button>
+          </div>
+          <div class="digits addition symbol operator" data-opp="+">
+            <button>
+              <svg
+                width="20px"
+                height="20px"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title />
+
+                <g id="Complete">
+                  <g data-name="add" id="add-2">
+                    <g>
+                      <line
+                        fill="none"
+                        stroke="#ffffff"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="12"
+                        x2="12"
+                        y1="19"
+                        y2="5"
+                      />
+
+                      <line
+                        fill="none"
+                        stroke="#ffffff"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        x1="5"
+                        x2="19"
+                        y1="12"
+                        y2="12"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="second-row">
+          <div class="digits number">
+            <button>4</button>
+          </div>
+          <div class="digits number">
+            <button>5</button>
+          </div>
+          <div class="digits number">
+            <button>6</button>
+          </div>
+          <div class="digits subtraction symbol operator" data-opp="-">
+            <button>
+              <svg
+                width="20px"
+                height="20px"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6 12L18 12"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="third-row">
+          <div class="digits number">
+            <button>1</button>
+          </div>
+          <div class="digits number">
+            <button>2</button>
+          </div>
+          <div class="digits number">
+            <button>3</button>
+          </div>
+          <div class="digits multiplication symbol operator" data-opp="*">
+            <button>
+              <svg
+                fill="#ffffff"
+                width="20px"
+                height="20px"
+                viewBox="0 0 56 56"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M 13.0117 40.0117 C 12.2148 40.8086 12.1914 42.1680 13.0117 42.9883 C 13.8086 43.8086 15.1680 43.7851 15.9883 42.9883 L 27.9883 30.9648 L 40.0117 42.9883 C 40.8086 43.7851 42.1680 43.8086 42.9648 42.9883 C 43.8086 42.1680 43.7851 40.8086 42.9648 40.0117 L 30.9648 27.9883 L 42.9648 15.9883 C 43.7851 15.1914 43.8086 13.8086 42.9648 13.0117 C 42.1680 12.1914 40.8086 12.2148 40.0117 13.0117 L 27.9883 25.0352 L 15.9883 13.0117 C 15.1680 12.2148 13.8086 12.1914 13.0117 13.0117 C 12.1914 13.8086 12.2148 15.1914 13.0117 15.9883 L 25.0117 27.9883 Z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="fourth-row">
+          <div class="digits plusminus operator" data-opp="+-">
+            <button>
+              <svg
+                fill="#ffffff"
+                width="25px"
+                height="25px"
+                viewBox="0 0 256 256"
+                id="Flat"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M205.65674,61.65674l-144,144a7.99984,7.99984,0,0,1-11.31348-11.31348l144-144a7.99984,7.99984,0,0,1,11.31348,11.31348ZM64,112a8,8,0,0,0,16,0V80h32a8,8,0,0,0,0-16H80V32a8,8,0,0,0-16,0V64H32a8,8,0,0,0,0,16H64Zm160,64H144a8,8,0,0,0,0,16h80a8,8,0,0,0,0-16Z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="digits number">
+            <button>0</button>
+          </div>
+          <div class="digits period operator" data-opp=".">
+            <button>
+              <svg
+                fill="#ffffff"
+                width="30px"
+                height="30px"
+                viewBox="-6.5 0 32 32"
+                version="1.1"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>period</title>
+                <path d="M8.406 23.188h2.406v2.406h-2.406v-2.406z"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="digits equals symbol operator" data-opp="=">
+            <button>
+              <svg
+                fill="#ffffff"
+                width="20px"
+                height="20px"
+                viewBox="0 0 256 256"
+                id="Flat"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M228,160a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,160ZM40,108H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24Z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

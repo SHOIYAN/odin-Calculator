@@ -112,3 +112,18 @@ clearEverything.addEventListener("click", handleClearAll);
 clear.addEventListener("click", handleBackspace);
 plusMinus.addEventListener("click", handlePlusMinus);
 period.addEventListener("click", handleDecimal);
+
+// Keyboard Support
+document.addEventListener("keydown", (e) => {
+  const key = e.key;
+
+  if (key >= "0" && key <= "9") handleNumber(key);
+  if (["+", "-", "*", "/"].includes(key)) handleOperator(key);
+  if (key === "Enter" || key === "=") {
+    e.preventDefault();
+    handleEquals();
+  }
+  if (key === "Backspace") handleBackspace();
+  if (key === "Escape") handleClearAll();
+  if (key === ".") handleDecimal();
+});

@@ -68,6 +68,17 @@ function handleOperator(op) {
   operator = op;
   shouldResetBottom = true;
 }
+function handleEquals() {
+  if (firstNum !== null && operator && bottomDisplay.textContent !== "") {
+    secondNum = parseFloat(bottomDisplay.textContent);
+    const output = operate(operator, firstNum, secondNum);
+    topDisplay.textContent = `${firstNum} ${operator} ${secondNum} =`;
+    bottomDisplay.textContent = output;
+    firstNum = output;
+    operator = null;
+    shouldResetBottom = true;
+  }
+}
 
 
 //  Button Listeners
@@ -77,3 +88,4 @@ numberButtons.forEach((btn) =>
 operatorButtons.forEach((btn) =>
   btn.addEventListener("click", () => handleOperator(btn.dataset.opp))
 );
+equals.addEventListener("click", handleEquals);

@@ -84,9 +84,13 @@ function handleClearAll() {
   bottomDisplay.textContent = "";
   topDisplay.textContent = "";
 }
-
 function handleBackspace() {
   bottomDisplay.textContent = bottomDisplay.textContent.slice(0, -1);
+}
+function handlePlusMinus() {
+  let input = Number(bottomDisplay.textContent);
+  if (isNaN(input)) return;
+  bottomDisplay.textContent = `${input * -1}`;
 }
 
 
@@ -100,3 +104,4 @@ operatorButtons.forEach((btn) =>
 equals.addEventListener("click", handleEquals);
 clearEverything.addEventListener("click", handleClearAll);
 clear.addEventListener("click", handleBackspace);
+plusMinus.addEventListener("click", handlePlusMinus);

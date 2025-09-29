@@ -79,6 +79,15 @@ function handleEquals() {
     shouldResetBottom = true;
   }
 }
+function handleClearAll() {
+  firstNum = secondNum = operator = null;
+  bottomDisplay.textContent = "";
+  topDisplay.textContent = "";
+}
+
+function handleBackspace() {
+  bottomDisplay.textContent = bottomDisplay.textContent.slice(0, -1);
+}
 
 
 //  Button Listeners
@@ -89,3 +98,5 @@ operatorButtons.forEach((btn) =>
   btn.addEventListener("click", () => handleOperator(btn.dataset.opp))
 );
 equals.addEventListener("click", handleEquals);
+clearEverything.addEventListener("click", handleClearAll);
+clear.addEventListener("click", handleBackspace);
